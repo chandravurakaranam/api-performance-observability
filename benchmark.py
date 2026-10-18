@@ -133,8 +133,10 @@ for _, row in summary_df.iterrows():
     readme_markdown += f"| **{row['Service']}** | {row['Latest Status']} | {row['Current Latency']} | {row['Avg Latency']} | {row['P95 Latency']} | {row['SLA Uptime']} |\n"
 
 readme_markdown += """
-### 📊 Historical Latency Trend
-![Latency Trends](latency_trend.png)
+### Historical Latency Trend
+![Latency Trends](latency_trend.png?v={int(time.time())})
+"""
+
 
 ---
 
