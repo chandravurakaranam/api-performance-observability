@@ -15,8 +15,10 @@ ENDPOINTS = {
 }
 
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Automated Benchmarking Bot)"
+    "User-Agent": "Mozilla/5.0 (Automated Benchmarking Bot)",
+    "Accept": "application/dns-json"  # Required by Cloudflare DNS API
 }
+
 
 CSV_FILE = "history.csv"
 
