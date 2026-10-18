@@ -6,7 +6,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from datetime import datetime, timezone
 
-# Target endpoints and their specific header requirements
 ENDPOINTS = {
     "GitHub API": {
         "url": "https://api.github.com",
@@ -31,9 +30,7 @@ ENDPOINTS = {
 
 CSV_FILE = "history.csv"
 
-# ==========================================
 # 1. RUN BENCHMARKS
-# ==========================================
 current_timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 date_key = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M")
 
@@ -66,7 +63,6 @@ for name, config in ENDPOINTS.items():
 
 df_new = pd.DataFrame(results)
 
-# Append to cumulative dataset
 if os.path.exists(CSV_FILE):
     df_history = pd.read_csv(CSV_FILE)
     df_combined = pd.concat([df_history, df_new], ignore_index=True)
@@ -75,9 +71,7 @@ else:
 
 df_combined.to_csv(CSV_FILE, index=False)
 
-# ==========================================
 # 2. GENERATE LATENCY TIME-SERIES PLOT
-# ==========================================
 plt.figure(figsize=(10, 5))
 
 for name in ENDPOINTS.keys():
@@ -94,9 +88,7 @@ plt.tight_layout()
 plt.savefig("latency_trend.png", dpi=300)
 plt.close()
 
-# ==========================================
-# 3. CALCULATE SLA METRICS & GENERATE README
-# ==========================================
+# 3. GENERATE README
 summary_rows = []
 for name in ENDPOINTS.keys():
     service_df = df_combined[df_combined["service"] == name]
@@ -116,7 +108,6 @@ for name in ENDPOINTS.keys():
     })
 
 summary_df = pd.DataFrame(summary_rows)
-
 cache_buster = int(time.time())
 
 readme_markdown = f"""# 🌐 Automated Cloud API Observability & Benchmark Suite
