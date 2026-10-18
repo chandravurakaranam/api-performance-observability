@@ -1,0 +1,5 @@
+timestamp,service,latency_ms,status_code,payload_bytes,success
+2026-10-18 16:35,GitHub API,178.24,200,2262,1
+2026-10-18 16:35,Cloudflare DNS (1.1.1.1),58.95,400,0,0
+2026-10-18 16:35,HuggingFace API,108.42,200,457,1
+2026-10-18 16:35,HTTPBin Echo,235.09,200,326,1
